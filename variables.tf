@@ -14,9 +14,9 @@ EOT
 
   type = map(object({
     name                              = string
-    container_access_type             = optional(string, "private")
+    container_access_type             = optional(string) # Default: "private"
     default_encryption_scope          = optional(string)
-    encryption_scope_override_enabled = optional(bool, true)
+    encryption_scope_override_enabled = optional(bool) # Default: true
     metadata                          = optional(map(string))
     storage_account_id                = optional(string)
     storage_account_name              = optional(string)
