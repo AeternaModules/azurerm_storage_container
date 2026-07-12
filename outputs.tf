@@ -1,3 +1,7 @@
+output "storage_containers_id" {
+  description = "Map of id values across all storage_containers, keyed the same as var.storage_containers"
+  value       = { for k, v in azurerm_storage_container.storage_containers : k => v.id }
+}
 output "storage_containers_container_access_type" {
   description = "Map of container_access_type values across all storage_containers, keyed the same as var.storage_containers"
   value       = { for k, v in azurerm_storage_container.storage_containers : k => v.container_access_type }
