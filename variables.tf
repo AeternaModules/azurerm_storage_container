@@ -14,9 +14,9 @@ EOT
 
   type = map(object({
     name                              = string
-    container_access_type             = optional(string) # Default: "private"
+    container_access_type             = optional(string)
     default_encryption_scope          = optional(string)
-    encryption_scope_override_enabled = optional(bool) # Default: true
+    encryption_scope_override_enabled = optional(bool)
     metadata                          = optional(map(string))
     storage_account_id                = optional(string)
     storage_account_name              = optional(string)
@@ -39,5 +39,9 @@ EOT
   #   source:    validation.StringInSlice value list is not a literal []string - likely a generated PossibleValuesFor*() helper; resolve separately
   # path: default_encryption_scope
   #   source:    [from validate.StorageEncryptionScopeName] !regexp.MustCompile("^[0-9a-zA-Z]{4,63}$").MatchString(input)
+  # path: metadata
+  #   source:    [from validate.MetaDataKeys] isCSharpKeyword
+  # path: metadata
+  #   source:    [from validate.MetaDataKeys] !regexp.MustCompile(`^([a-z_]{1}[a-z0-9_]{1,})$`).MatchString(k)
 }
 
